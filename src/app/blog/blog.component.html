@@ -1,0 +1,62 @@
+<div class="container text-center bg-secondary-subtle pt-2">
+    <h2>Noticias</h2>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <h4>Listado de Noticias</h4>
+            <hr>
+            <div class="card my-3" *ngFor="let noticia of noticias">
+                <img [src]="noticia.imagen" [alt]="noticia.titulo">
+                <div class="p-2">
+                    <h6 class="card-title"> {{ noticia.titulo }}</h6>
+                    <p class="card-subtitle mb-2 text-body-secondary"> {{ noticia.fecha }} </p>
+                    <p class="card-text"> {{ noticia.cuerpo }} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h4>Crear Noticia</h4>
+            <hr>
+            <form (ngSubmit)="agregarNuevaNoticia()">
+                <input 
+                    type="text" 
+                    class="form-control mb-2" 
+                    placeholder="Titulo" 
+                    [(ngModel)]="nuevaNoticia.titulo"
+                    name="titulo"
+                >
+                <input 
+                    type="text" 
+                    class="form-control mb-2" 
+                    placeholder="Url imagen" 
+                    [(ngModel)]="nuevaNoticia.imagen"
+                    name="imagen"
+                >
+                <textarea 
+                    type="text" 
+                    class="form-control mb-2" 
+                    placeholder="Cuerpo de la noticia" 
+                    [(ngModel)]="nuevaNoticia.cuerpo"
+                    name="cuerpo"
+                ></textarea>
+                <input 
+                    type="date" 
+                    class="form-control mb-2" 
+                    placeholder="Fecha" 
+                    [(ngModel)]="nuevaNoticia.fecha"
+                    name="fecha"
+                >
+                <button class="btn btn-primary" type="submit"> Agregar </button>
+            </form>
+            <!-- {{ validaciones.length }} -->
+            <div *ngIf="validaciones.length" class="list-errors p-2 my-2">
+                <ul class="text-start">
+                    Por favor llena los siguientes campos antes de enviar la informacion: 
+                    <li class="" *ngFor="let validacion of validaciones">
+                        {{validacion}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

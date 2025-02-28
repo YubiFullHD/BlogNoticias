@@ -1,0 +1,6 @@
+.list-errors {
+    border-radius: 1rem;
+    border: solid 1px;
+    border-color: rgba(255, 0, 0, 0.822);
+    background-color: rgba(255, 0, 0, 0.26);
+}
